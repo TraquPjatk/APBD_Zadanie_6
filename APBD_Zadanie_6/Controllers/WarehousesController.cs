@@ -31,7 +31,7 @@ namespace Zadanie5.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Coś tam się zadziało niedobrego {e.Message}");
+                return StatusCode(500, e.Message);
             }
         }
     }
