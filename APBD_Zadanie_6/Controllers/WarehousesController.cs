@@ -8,7 +8,9 @@ namespace Zadanie5.Controllers
     [ApiController]
     public class WarehousesController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
         private readonly IWarehouseService _warehouseService;
+
 
         public WarehousesController(IWarehouseService warehouseService)
         {
@@ -18,8 +20,19 @@ namespace Zadanie5.Controllers
         [HttpPost]
         public ActionResult AddProduct(ProductWarehouse product)
         {
-            _warehouseService.AddProduct(product);
-            return Ok();
+            try
+            {
+                _warehouseService.AddProduct(product);
+                return Ok("Added " + product + " to warehouse.");
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Coś tam się zadziało niedobrego {e.Message}");
+            }
         }
     }
 }
