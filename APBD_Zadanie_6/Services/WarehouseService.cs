@@ -10,10 +10,9 @@ namespace Zadanie5.Services
         private static List<ProductWarehouse> _productsInWarehouse = new List<ProductWarehouse>();
 
 
-        public WarehouseService(IWarehouseService warehouseService, IConfiguration configuration)
+        public WarehouseService(IConfiguration configuration)
         {
             _configuration = configuration;
-            _warehouseService = warehouseService;
         }
 
         public void AddProduct(ProductWarehouse product)
