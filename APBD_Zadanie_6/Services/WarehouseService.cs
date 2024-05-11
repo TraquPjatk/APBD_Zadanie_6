@@ -45,7 +45,6 @@ public void AddProduct(ProductWarehouse product)
             throw new ArgumentException("There is no order for product with id: " + product.IdProduct);
         }
 
-        // Tutaj dodajemy logikę sprawdzającą, czy zamówienie zostało zrealizowane
 
         var sql = "UPDATE [Order] SET FulfilledAt = @FulfilledAt WHERE IdProduct = @IdProduct AND FulfilledAt IS NULL";
 
